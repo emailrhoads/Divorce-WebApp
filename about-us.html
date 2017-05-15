@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--  This site was created in Webflow. http://www.webflow.com -->
+<!--  Last Published: Sun May 14 2017 20:38:26 GMT+0000 (UTC)  -->
+<html data-wf-page="58ef9e740a98660451332bf9" data-wf-site="586d441210f77a4f4975d9be">
+<head>
+  <meta charset="utf-8">
+  <title>About Us</title>
+  <meta content="About Us" property="og:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/scindo-divorce-helper.webflow.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script type="text/javascript">
+    WebFont.load({
+      google: {
+        families: ["Oswald:200,300,400,500,600,700","Roboto:300,regular","Roboto Condensed:regular","Karla:regular,700"]
+      }
+    });
+  </script>
+  <script src="js/modernizr.js" type="text/javascript"></script>
+  <link href="images/android-icon-36x36.png" rel="shortcut icon" type="image/x-icon">
+  <link href="images/Scindo-webclip.png" rel="apple-touch-icon">
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-91718206-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <!--  Begin Inspectlet Embed Code  -->
+  <script type="text/javascript" id="inspectletjs">
+    /* kill this for now
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 154642877]);
+    (function() {
+    function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+    })();
+    */
+  </script>
+  <!--  End Inspectlet Embed Code  -->
+  <!--  Google Tag Manager  -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KNMHWFP');
+  </script>
+  <!--  End Google Tag Manager  -->
+  <style>
+    .nobr {
+     	white-space: no-wrap;
+     }
+  </style>
+  <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+  <script>
+    var geoPluginLoaded = true;
+    document.addEventListener('DOMContentLoaded', function() {
+        //want to let people escape the modal
+        $('#popup-modal').click(function(){
+          $('#popup-modal').fadeOut();
+        });
+    	//check if the plugin loaded (for example did AdBlocker block it?
+      // if not - enable the popup
+    	try {
+        geoplugin_regionCode;
+    	} catch(err) {
+         geoPluginLoaded = false;
+         console.log(geoPluginLoaded);
+         $('a.button').click(function( event ) {
+            event.preventDefault();
+            $('#popup-modal').show();
+          });
+      }
+      //enable the modal for people not in NY
+      if (  !geoPluginLoaded ) { // want to make sure our references loaded
+        userRegion = geoplugin_regionCode();
+        console.log(userRegion);
+        if ( userRegion != 'NY' ){
+          //enable the modal
+          $('a.button').click(function( event ) {
+            event.preventDefault();
+            $('#popup-modal').show();
+          });
+        }
+      }
+     });
+  </script>
+</head>
+<body>
+  <div class="navbar">
+    <div class="w-container">
+      <div class="w-row">
+        <div class="left-nav w-col w-col-6 w-col-small-6 w-col-tiny-6">
+          <a class="w-inline-block" href="index.html"><img src="images/Scindo-logo.png" width="150">
+          </a>
+        </div>
+        <div class="right-nav w-col w-col-6 w-col-small-6 w-col-tiny-6"><a class="bigger contact footer-text" href="mailto:support@scindo.com?subject=Hey, I have a question..."><strong>Contact</strong></a><a class="bigger footer-text" href="about-us.html"><strong>About </strong></a><a class="bigger footer-text getstarted" href="app/divorce.html"><strong class="important-text-16">Get Started</strong></a>
+          <a class="social-btn w-inline-block" href="http://facebook.com/webflow"><img class="social-icon" src="images/facebook-icon_black.svg" width="25">
+          </a>
+          <a class="social-btn w-inline-block" href="http://twitter.com/webflowapp"><img class="social-icon" src="images/twitter-icon_black.svg" width="25">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about first hero section">
+    <div class="hero-container w-container">
+      <div class="div-block-5"><img class="bottom pie-chart" src="images/filing-paperwork-illo2x.png" width="476">
+        <h2 class="grey-heading section2">About Scindo<span class="text-span-2"><span class="text-span-3 nobr">... oh my</span></span></h2>
+      </div>
+    </div>
+  </div>
+  <div class="blue section spacer" data-anchor="slide1">
+    <p class="hero subhead"><span class="text-span"></span><span class="text-span-4"><span xmlns="http://www.w3.org/1999/xhtml">Scindo will help you</span>&nbsp;figure out your options and estimate your costs</span>
+    </p>
+  </div>
+  <div class="about second section yellow" id="section2">
+    <div class="container-4 w-container">
+      <h2 class="grey-heading section2">How does it work?<br><span class="text-span-2"><span class="text-span-3 nobr">... oh my</span></span></h2>
+      <p class="about subhead">Scindo uses publicly available divorce information and user input to continuously improve and predict the outcomes for your divorce.
+        <br>
+        <br>
+        <br><strong class="important-text-5">What does that mean?</strong>
+        <br>As you enter information into Scindo it will provide likely outcomes for your divorce in the following categories:
+        <br>Alimony amount
+        <br>Alimony duration
+        <br>Child support
+        <br>Division of marital property
+        <br>
+        <br><strong class="important-text-6">Into the nitty gritty....</strong>
+        <br>The Scindo system works by comparing attributes relating to the individuals getting the divorce, details about the duration of their marriage, and information about how they plan to divide resources inside the house and child custody. For example, 88% of the time the spouse that takes ownership of the living room couch will not take ownership of the kitchen household times.
+        <br>
+        <br>Using these proprietary correlations and information, Scindo helps guide divorcees through the difficult divorce process by providing them likely outcomes for how they will divide their finances and marital property.
+        <br>
+        <br>Instead of arguing about who gets the Persian rug, the family silver, and the hallway art; couples can choose easily divide property and then make adjustments as they so desire.</p>
+      <div>
+        <div class="caption">Prepare forms, estimate payments, create a parenting and child support plan &amp; more</div>
+      </div>
+    </div>
+  </div>
+  <div class="about blue section" data-anchor="slide1">
+    <div class="container-3 w-container">
+      <h2 class="grey-heading timeandmoney">Some questions we get a lot</h2>
+      <p class="about subhead"><strong class="important-text-7">Is Scindo legal?</strong>
+        <br>Yes, do you think we would spend this much time discussing it if it wasn't?
+        <br>
+        <br><strong class="important-text-8">Does Scindo work if I have kids?<br></strong> Yes it does. &nbsp;If you have children, Scindo will give you help you craft a visitation schedule and understand child support based on your state&nbsp;laws.
+        <br>
+        <br><strong class="important-text-9">Does Scindo work if I don't have a job?</strong>
+        <br>Yes, and it's the cheapest way to get divorced. If you do have a job, we can import your W2 forms to speed along your process.
+        <br>
+        <br><strong class="important-text-10">Why start Scindo?<br></strong>Divorce is messy and can be as expensive as a wedding if not more, why hasn't technology take over till now? Because machines just started learning faster than ever before and now we can apply it to something as simple as divorce. Oh, and if you know anything about our founder, sometimes he just can't let things go.&nbsp;
+        <br>
+        <br><strong class="important-text-11">I want to use a lawyer. Can Scindo still help me?</strong>
+        <br>Scindo also provides a toolbox for lawyers to calculate and securely store more complex divorce cases.</p><a class="link-3" href="mailto:support@scindo.com?subject=Requesting Access to ScindoLaw">Click here to request access.​</a>
+      <p class="about subhead"><strong class="important-text-12">How Scindo learns<br></strong>Divorce is emotional by taking the human elements out and focusing on what people can expect based on the law helps the courts and families make smarter decisions based on machine calculations instead of emotional ones.</p><img class="about piggy-bank" src="images/marital-property-illo2x.png" width="179">
+      <div class="caption">*of if you'd like we can file your divorce for you.</div>
+    </div>
+  </div>
+  <div class="about section" data-anchor="slide1">
+    <div class="w-container">
+      <h2 class="grey-heading timeandmoney">How it all got started</h2>
+      <p class="about subhead">We started Scindo because we know - from experience - that Divorce is messy and can be as expensive as a wedding.
+        <br>
+        <br>After two divorces and several thousand dollars later we decided that it was time to help fix the divorce process for couples who don't want to stay married and don't want to take each other to court.
+        <br>
+        <br>We use TurboTax for our taxes. We use our iPhone to send money. Why isn't there something like that for divorce?</p>
+      <div class="caption">*of if you'd like we can file your divorce for you.</div>
+    </div>
+  </div>
+  <div class="social-section">
+    <div class="w-container">
+      <div class="share-wrapper">
+        <div class="share-btn w-widget w-widget-facebook">
+          <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffacebook.com%2Fwebflow&amp;layout=box_count&amp;locale=en_US&amp;action=like&amp;show_faces=false&amp;share=false" scrolling="no" frameborder="0" allowtransparency="true" style="border: none; overflow: hidden; width: 55px; height: 65px;"></iframe>
+        </div>
+        <div class="share-btn w-widget w-widget-twitter">
+          <div class="w-widget-twitter-count-shim w--vertical">
+            <div class="w-widget-twitter-count-inner">...</div>
+          </div>
+          <div class="w-widget-twitter-count-clear"></div>
+          <iframe src="https://platform.twitter.com/widgets/tweet_button.html#url=http%3A%2F%2Fwebflow.com&amp;counturl=webflow.com&amp;text=Check%20out%20this%20site&amp;count=vertical&amp;size=m&amp;dnt=true" scrolling="no" frameborder="0" allowtransparency="true" style="border: none; overflow: hidden; width: 62px; height: 21px;"></iframe>
+        </div>
+        <div class="share-btn w-widget w-widget-gplus">
+          <div class="g-plusone" data-href="http://webflow.com" data-size="tall" data-annotation="bubble" data-recommendations="false" id="___plusone_3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container w-container">
+      <h2 class="h1 wide">Discover how Scindo can help you</h2>
+      <div class="sign-up-form w-form">
+        <form data-name="Signup Form" data-redirect="/success" name="wf-form-signup-form"><a class="button w-button" href="app/divorce.html">Get started for free</a>
+        </form>
+        <div class="success-message w-form-done">
+          <p>Thanks! You'll be the first to know.</p>
+          <p class="spread-word">Help spread the word!</p>
+          <div class="social-widget-wrapper w-clearfix">
+            <div class="social-widget w-widget w-widget-twitter">
+              <iframe src="https://platform.twitter.com/widgets/tweet_button.html#url=http%3A%2F%2Fwebflow.com&amp;counturl=webflow.com&amp;text=Check%20out%20this%20site&amp;count=horizontal&amp;size=m&amp;dnt=true" scrolling="no" frameborder="0" allowtransparency="true" style="border: none; overflow: hidden; width: 62px; height: 21px;"></iframe>
+              <div class="w-widget-twitter-count-shim">
+                <div class="w-widget-twitter-count-inner">...</div>
+              </div>
+            </div>
+            <div class="social-widget w-widget w-widget-facebook">
+              <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffacebook.com%2Fwebflow&amp;layout=button_count&amp;locale=en_US&amp;action=like&amp;show_faces=false&amp;share=false" scrolling="no" frameborder="0" allowtransparency="true" style="border: none; overflow: hidden; width: 90px; height: 20px;"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="error-message w-form-fail">
+          <p>Oops! Something went wrong while submitting the form. :(</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer grey section">
+    <div class="w-container"><img class="footer logo" src="images/footer-logo.png" width="209">
+      <a class="footer social-btn w-inline-block" href="http://twitter.com/webflowapp"><img class="social-icon" src="images/twitter-icon_black.svg">
+      </a>
+      <a class="footer social-btn social-icon w-inline-block" href="http://facebook.com/webflow"><img src="images/facebook-icon_black.svg">
+      </a>
+      <a class="footer social-btn w-inline-block" href="mailto:contact@webflow.com"><img class="social-icon" src="images/email-icon-black.svg">
+      </a>
+      <div class="footer-text">Copyright 2017 Scindo, inc. All rights reserved.</div>
+    </div>
+    <div class="w-embed"></div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+  <script src="js/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+</body>
+</html>

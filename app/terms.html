@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<!--  This site was created in Webflow. http://www.webflow.com -->
+<!--  Last Published: Sun May 14 2017 20:38:26 GMT+0000 (UTC)  -->
+<html data-wf-page="58dac3cf0bac63d66f8465ba" data-wf-site="586d441210f77a4f4975d9be">
+<head>
+  <meta charset="utf-8">
+  <title>terms</title>
+  <meta content="terms" property="og:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="../css/scindo-divorce-helper.webflow.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script type="text/javascript">
+    WebFont.load({
+      google: {
+        families: ["Oswald:200,300,400,500,600,700","Roboto:300,regular","Roboto Condensed:regular","Karla:regular,700"]
+      }
+    });
+  </script>
+  <script src="../js/modernizr.js" type="text/javascript"></script>
+  <link href="../images/android-icon-36x36.png" rel="shortcut icon" type="image/x-icon">
+  <link href="../images/Scindo-webclip.png" rel="apple-touch-icon">
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-91718206-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <!--  Begin Inspectlet Embed Code  -->
+  <script type="text/javascript" id="inspectletjs">
+    /* kill this for now
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 154642877]);
+    (function() {
+    function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+    setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+    })();
+    */
+  </script>
+  <!--  End Inspectlet Embed Code  -->
+  <!--  Google Tag Manager  -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KNMHWFP');
+  </script>
+  <!--  End Google Tag Manager  -->
+  <script src="https://use.fontawesome.com/9cbf6a3877.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('head js start');
+       //Change pricing when form happens
+        $("#email-form :input").change(function() {
+            //console.log('form changed');
+            totalPrice = 0;
+            //capture prices from the front end
+         		paperworkFee = 89;
+         		alimony = 399;
+         		childSupport = 399;
+         		filingFee = 435;
+            //check form status
+            if ( $('#paperwork')[0].checked ) { totalPrice = paperworkFee; } 
+            if ( $('#alimony')[0].checked ) { totalPrice = totalPrice + alimony; } 
+            if ( $('#child-support')[0].checked ) { totalPrice = totalPrice + childSupport; } 
+            if ( $('#filing')[0].checked ) { totalPrice = totalPrice + filingFee; } 
+            //set value on total        
+            //console.log(totalPrice);
+            $('#total-price-amount').text(totalPrice);
+         });
+          //Create PDF
+          $('#ud1').click(function(e) {
+            e.preventDefault();
+            doc = new jsPDF();
+            //grab form info
+              yourFname = $('#first-name-input').val().capitalizeFirstLetter();
+            	yourLname = $('#last-name-input').val().capitalizeFirstLetter();
+              spouseFname = $('#spouse-first-name-input').val().capitalizeFirstLetter();
+            	spouseLname = $('#spouse-last-name-input').val().capitalizeFirstLetter();
+            	filingCounty = $('#county-input').val();
+              address1 = $('#address-input-street').val();
+              address2 = $('#address-input-street').val();
+              address3 = $('#address-input-street').val();
+              phoneNumber = $('#telephone-input').val();
+              email = $('#email-input').val();
+             if (address1 == "") {
+              	address1 = 'your address';
+                address2 = 'will go here';
+                address3 = '';
+                noAddress = true;
+              } else { noAddress = false; }
+              if (phoneNumber == "") {
+              	phoneNumber = '555-555-5555';
+              }        
+            yourFullname = yourFname + ' ' + yourLname;
+            spouseFullname = spouseFname + ' ' + spouseLname;
+            //Prepare document information
+            topRightText = [
+              'Index No.: __________________',
+              'Date Summons filed: _________',
+              'Plaintiff designates '+filingCounty+' County',
+              '	as the place of trial',
+              'The basis of venue is: Plaintiff\'s residence',
+              '',
+              'SUMMONS WITH NOTICE',
+              'Plaintiff resides at:'
+              ];   
+            topRightAddrText =[
+              address1,
+              address2,
+              address3
+              ];
+            topLeftText = [
+              'SUPREME COURT OF THE STATE OF NEW YORK',
+              'COUNTY OF ' +filingCounty.toUpperCase(),
+              ' --------------------------------------------------------------------X',
+              ''+yourFullname,
+              '					Plaintiff',
+              '		-against- ',
+              ''+spouseFullname,
+              '					Defendant',
+              '',
+              '--------------------------------------------------------------------X',
+              '',
+              '',
+              '', 
+              '',
+              'To the above named Defendant:',
+              '',
+              '		YOU ARE HEREBY SUMMONED to answer the complaint in this action and to serve a',
+              '   copy of your answer on the Plaintiff within twenty (20) days after the service of this summons,',
+              '   exclusive of the day of service, where service is made by delivery upon you personally within',
+              '   the state, or within thirty (30) days after completion of service where service is made in any', 
+              '   other manner.  In case of your failure to appear or answer, judgment will be taken against you',
+              '   by default for the relief demanded in the complaint.',
+              '',
+              'Dated: ________________',
+              ''+yourFullname+', Plaintiff',
+              '',
+              '',
+              '',
+              '',
+              '',
+              ' NOTICE: The nature of this action is to dissolve the marriage between the parties, on the grounds: DRL§170',
+              '',
+              'The relief sought is a judgment of absolute divorce in favor of the Plaintiff dissolving the',
+              'marriage between the parties in this action.',
+              '',
+              'The nature of any ancillary or additional relief requested is:',
+              '[X] Additional page describing ancillary relief requested is attached;',
+              '[X] Marital property to be distributed pursuant to separation agreement/stipulation;',
+              '[_] I waive distribution of Marital property;',
+              '',
+              '[_] I am not seeking maintenance as payee as described in the Notice of Guideline Maintenance',
+              '(the “Notice”) other than what was already agreed to in a written agreement/stipulation ; OR ',
+              '[_] I seek maintenance as payee, as described in the Notice; OR',
+              '[_] NONE - I am not requesting any ancillary relief;',
+              'AND any other relief the court deems fit and proper'
+            ];
+             var bottomRightText = [
+              '',
+              ' Phone No.: ',
+              ' Address:  '
+              ];
+             var bottomRightAddrText = [
+             '',
+             	phoneNumber,
+             	address1,
+              address2,
+              address3,
+             ];
+            doc.setFontSize(12);
+            doc.setFont("times");
+            doc.text(topLeftText, 10, 10);
+            doc.text(topRightText, 130, 10);
+            doc.text(bottomRightText,130,118);
+            doc.setFontType("bold");
+    				doc.text(105, 70, 'ACTION FOR A DIVORCE', null, null, 'center');        
+            if (noAddress) {
+              doc.setTextColor(255, 0, 0);
+             }
+            doc.setFontType("normal");
+            doc.text(topRightAddrText, 140, 48);
+            doc.text(bottomRightAddrText,155,118);
+            doc.save('UD2_ACTION_FOR_DIVORCE'+yourLname+'.pdf');
+          }); //end of UD1 doc click
+    });
+  </script>
+</head>
+<body>
+  <div class="modal-wrapper" data-ix="hide-modal" id="popup-modal">
+    <div class="signup-wrapper w-clearfix" id="checkout-modal"><a class="close-modal" href="#">Close</a>
+      <h1 class="h1 modal"><span id="checkout-modal-header" class="text-span-5">Continue as a paying member</span></h1>
+      <div class="form-wrapper w-form">
+        <form class="app-form welcome" data-name="pricing-options" data-redirect="/add/divorce" id="wf-form-pricing-options" name="wf-form-pricing-options" redirect="/add/divorce">
+          <div class="app checkbox-field w-checkbox">
+            <input checked="checked" class="checkbox w-checkbox-input" data-name="paperwork-pricing" id="paperwork-pricing" name="paperwork-pricing" required="required" type="checkbox">
+            <label class="app checkbox-label w-form-label" for="paperwork-pricing">General divorce paperwork <span id="paperwork-price" class="price">$<span id="paperwork-price-value">89</span></span>
+            </label>
+          </div>
+          <div class="checkbox-field subfield w-checkbox" id="ud2">
+            <input checked="checked" class="checkbox w-checkbox-input" data-name="Checkbox 3" id="ud2-check" name="checkbox-3" type="checkbox">
+            <label class="checkbox-label subfield w-form-label" for="ud2-check">Verified Complaint (UD-2)</label>
+          </div>
+          <div class="checkbox-field subfield w-checkbox">
+            <input checked="checked" class="checkbox w-checkbox-input" data-name="Checkbox 3" id="ud5-check" name="checkbox-3" type="checkbox">
+            <label class="checkbox-label subfield w-form-label" for="ud5-check" id="ud3">Affirmation of Regularity (UD-5)</label>
+          </div>
+          <div class="checkbox-field subfield w-checkbox">
+            <input checked="checked" class="checkbox w-checkbox-input" data-name="Checkbox 3" id="ud6-check" name="checkbox-3" type="checkbox">
+            <label class="checkbox-label subfield w-form-label" for="ud6-check">Affidavit of Plaintiff (UD-6)</label>
+          </div>
+          <div class="checkbox-field subfield w-checkbox">
+            <input checked="checked" class="checkbox w-checkbox-input" data-name="Checkbox 3" id="ud7-check" name="checkbox-3" type="checkbox">
+            <label class="checkbox-label subfield w-form-label" for="ud7-check">Affidavit of Defendant (UD-7)</label>
+          </div>
+          <div class="app checkbox-field w-checkbox">
+            <input class="checkbox w-checkbox-input" data-name="alimony-pricing" id="alimony-pricing" name="alimony-pricing" type="checkbox">
+            <label class="app checkbox-label w-form-label" for="alimony-pricing">Alimony calculations and forms <span id="alimony-price" class="price">$3<span id="alimony-price-value">99</span></span>
+            </label>
+          </div>
+          <div class="app checkbox-field w-checkbox">
+            <input class="checkbox w-checkbox-input" data-name="child-support-pricing" id="child-support-pricing" name="child-support-pricing" type="checkbox">
+            <label class="app checkbox-label w-form-label" for="child-support-pricing">Child support calculation and forms <span id="child-support-price" class="price">$<span id="child-support-price-value">399</span></span>
+            </label>
+          </div>
+          <div class="app checkbox-field w-checkbox">
+            <input class="checkbox w-checkbox-input" data-name="divorce-filing-pricing" id="divorce-filing-pricing" name="divorce-filing-pricing" type="checkbox">
+            <label class="app checkbox-label w-form-label" for="divorce-filing-pricing">File my divorce online <span id="filing-price" class="price">$<span id="filing-price-value">425</span></span>
+            </label>
+          </div>
+          <h1 class="h1 total-price" id="total-price">$<span id="total-price-amount">89</span></h1>
+          <input class="button w-button" data-wait="Got it!" id="services-submit" type="submit" value="Continue">
+        </form>
+        <div class="w-form-done">
+          <div>Thank you! Your submission has been received!</div>
+        </div>
+        <div class="w-form-fail">
+          <div>Oops! Something went wrong while submitting the form</div>
+        </div>
+      </div>
+    </div>
+    <div class="signup-wrapper w-clearfix" id="payment-modal"><a class="close-modal" href="#">Close</a>
+      <h1 class="h1">Payment Info</h1>
+      <div class="w-form">
+        <form data-name="Email Form 2" id="email-form-2" name="email-form-2">
+          <label for="name">Credit Card Number</label>
+          <input class="text-field-2 w-input" data-name="Name" format-mask="####-######-#####" id="name" maxlength="256" name="name" placeholder="1111-2222-3333-4444" required="required" type="text">
+          <div class="row-3 w-row">
+            <div class="column-2 w-col w-col-6">
+              <div>
+                <label for="CCMonth">Expiration</label>
+                <input class="expiration text-field w-input" data-name="CCMonth" id="CCMonth" maxlength="256" name="CCMonth" placeholder="MM" required="required" type="text">
+                <div class="text-block-6">/</div>
+                <input class="expiration text-field w-input" data-name="ccyear" id="ccyear" maxlength="256" name="ccyear" placeholder="YY" required="required" type="text">
+              </div>
+            </div>
+            <div class="w-col w-col-6">
+              <div>
+                <label for="CCMonth-2">CVV</label>
+                <input class="expiration text-field w-input" data-name="Ccmonth 2" id="CCMonth-2" maxlength="256" name="CCMonth-2" placeholder="###" required="required" type="text">
+              </div>
+            </div>
+          </div>
+          <input class="w-button" data-wait="Please wait..." type="submit" value="Submit">
+        </form>
+        <div class="success-message-2 w-form-done">
+          <div>There was an issue processing your payment information.</div><img class="error-image" sizes="100vw" src="../images/Colab---Drawing-1_10.png" srcset="../images/Colab---Drawing-1_10-p-500x521.png 500w, ../images/Colab---Drawing-1_10-p-800x833.png 800w, ../images/Colab---Drawing-1_10-p-1080x1124.png 1080w, ../images/Colab---Drawing-1_10.png 1114w">
+          <div>We have notified John at Scindo about this...</div>
+        </div>
+        <div class="w-form-fail">
+          <div>Oops! Something went wrong while submitting the form</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app navbar">
+    <div class="w-container">
+      <div class="w-row">
+        <div class="left-nav w-col w-col-6 w-col-small-6 w-col-tiny-6" data-ix="expand-form-menu">
+          <div class="div-block-4"><a class="link-2 nav-menu-link w-hidden-main w-hidden-medium" href="#">Menu</a>
+          </div>
+          <a class="home-link w-inline-block" href="../archive/old-home.html"><img class="logo" src="../images/Scindo-logo.png" width="143">
+          </a>
+        </div>
+        <div class="right-nav w-col w-col-6 w-col-small-6 w-col-tiny-6"><a class="app button link" href="#" id="top-right-save">Save</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-container">
+    <div class="row-2 w-row">
+      <div class="column left-col w-col w-col-3 w-col-tiny-tiny-stack" id="left-col">
+        <h4 class="heading">Your Forms</h4>
+        <div class="tooltip" id="my-forms-tooltip">As you enter information your forms will appear here</div>
+        <div><a class="backup form-item-div w-clearfix" href="#" id="ud1"><span id="ud1-form-item" class="form-item">Form</span>&nbsp;Action for Divorce</a><a class="form-item-div w-clearfix" href="#" id="ud1"><span id="ud1-form-item" class="form-item">Form </span>Verified Complaint</a><a class="form-item-div w-clearfix" href="#" id="ud1"><span id="ud1-form-item" class="form-item">Form</span>&nbsp;Affidavit of Service</a><a class="form-item-div w-clearfix" href="#" id="ud1"><span id="ud1-form-item" class="form-item">Form </span>&nbsp;Removal of Barriers to Remarriage</a><a class="form-item-div w-clearfix" href="#" id="ud1"><span id="ud1-form-item" class="form-item">Form </span>&nbsp;Affirmation of Regularity</a><a class="form-item-div w-clearfix" href="#" id="ud1"><span id="ud1-form-item" class="form-item">Form </span>&nbsp;Affidavit of Plaintiff</a><a class="form-item-div w-clearfix" href="#" id="ud1"><span id="ud1-form-item" class="form-item">Form </span>&nbsp;Affidavit of Defendant</a><a class="form-item-div" href="#" id="ud1"><span id="ud1-form-item" class="form-item"></span><span class="tool-item">Tool </span>&nbsp;Maintenance Calculator</a><a class="form-item-div" href="#" id="ud1"><span id="ud1-form-item" class="form-item"></span><span class="tool-item">Tool</span> &nbsp;Child Support Calculator</a><a class="form-item-div" href="#" id="ud1"><span id="ud1-form-item" class="form-item"></span><span class="file-item">Send</span> &nbsp;File your Divorce Online</a>
+        </div>
+      </div>
+      <div class="right-column w-col w-col-9 w-col-tiny-tiny-stack" id="main-col">
+        <div class="first-section hero section" id="your-name">
+          <h1 class="app h1">Our lawyers made us do this</h1>
+          <div>To use a form here, you must accept our&nbsp;Terms of Use.
+            <br>
+            <br>These terms include that...</div>
+          <div>
+            <ul class="w-list-unstyled">
+              <li class="list-item-4">This site does not give legal advice. Talk to a lawyer if you need legal advice.</li>
+              <li class="list-item-3">This site is not for commercial use.</li>
+              <li class="list-item-2">This site is for low-income people; the staff of nonprofit and charitable organizations; lawyers and their staff providing not-for-profit or reduced fee legal assistance to low-income people or nonprofit and charitable organizations; self-represented litigants; and court personnel assisting other permitted users.</li>
+            </ul>
+          </div>
+          <div class="div-block flex-row row" id="flex-row">
+            <div class="left-right-div welcome"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="app footer grey section">
+    <div class="container-2 w-container"><img class="footer logo" src="../images/footer-logo.png" width="209">
+      <a class="footer social-btn w-inline-block" href="http://twitter.com/webflowapp"><img class="social-icon" src="../images/twitter-icon_black.svg">
+      </a>
+      <a class="footer social-btn social-icon w-inline-block" href="http://facebook.com/webflow"><img src="../images/facebook-icon_black.svg">
+      </a>
+      <a class="footer social-btn w-inline-block" href="mailto:contact@webflow.com"><img class="social-icon" src="../images/email-icon-black.svg">
+      </a>
+      <div class="footer-text">Copyright 2017 Scindo, inc. All rights reserved.</div>
+      <div class="w-embed w-script">
+        <script>
+          var doc;
+          var topRightText;
+          var topLeftText;
+          var bottomRightText;
+          var countyList = {
+                  Albany : 'Albany',
+                  Allegany : 'Allegany',
+                  Bronx : 'Bronx',
+                  Broome : 'Broome',
+                  Cattaraugus : 'Cattaraugus',
+                  Cayuga : 'Cayuga',
+                  Chautauqua : 'Chautauqua',
+                  Chemung : 'Chemung',
+                  Chenango : 'Chenango',
+                  Clinton : 'Clinton',
+                  Columbia : 'Columbia',
+                  Cortland : 'Cortland',
+                  Delaware : 'Delaware',
+                  Dutchess : 'Dutchess',
+                  Erie : 'Erie',
+                  Essex : 'Essex',
+                  Franklin : 'Franklin',
+                  Fulton : 'Fulton',
+                  Genesee : 'Genesee',
+                  Greene : 'Greene',
+                  Hamilton : 'Hamilton',
+                  Herkimer : 'Herkimer',
+                  Jefferson : 'Jefferson',
+                  Kings : 'Kings',
+                  Lewis : 'Lewis',
+                  Livingston : 'Livingston',
+                  Madison : 'Madison',
+                  Monroe : 'Monroe',
+                  Montgomery : 'Montgomery',
+                  Nassau : 'Nassau',
+                  NewYork : 'New York',
+                  Niagara : 'Niagara',
+                  Oneida : 'Oneida',
+                  Onondaga : 'Onondaga',
+                  Ontario : 'Ontario',
+                  Orange : 'Orange',
+                  Orleans : 'Orleans',
+                  Oswego : 'Oswego',
+                  Otsego : 'Otsego',
+                  Putnam : 'Putnam',
+                  Queens : 'Queens',
+                  Rensselaer : 'Rensselaer',
+                  Richmond : 'Richmond',
+                  Rockland : 'Rockland',
+                  Saratoga : 'Saratoga',
+                  Schenectady : 'Schenectady',
+                  Schoharie : 'Schoharie',
+                  Schuyler : 'Schuyler',
+                  Seneca : 'Seneca',
+                  StLawrence : 'St. Lawrence',
+                  Steuben : 'Steuben',
+                  Suffolk : 'Suffolk',
+                  Sullivan : 'Sullivan',
+                  Tioga : 'Tioga',
+                  Tompkins : 'Tompkins',
+                  Ulster : 'Ulster',
+                  Warren : 'Warren',
+                  Washington : 'Washington',
+                  Wayne : 'Wayne',
+                  Westchester : 'Westchester',
+                  Wyoming : 'Wyoming',
+                  Yate : 'Yates'
+                };
+          function formTransition(e,outObj,inObj){
+          	e.preventDefault();
+            e.stopPropagation();
+            webflowShow(inObj);
+            scrollTo(inObj);
+          }
+          function webflowShow(i){
+          	$(i).removeClass("w-hidden-main").removeClass("w-hidden-medium").removeClass("w-hidden-small").removeClass("w-hidden-tinyshow").fadeIn('slow');
+          }
+          function scrollTo(q){
+          	var lilExtra = -100;
+          	$('html, body').animate({
+                   scrollTop: parseInt($(q).offset().top+lilExtra)
+              }, 1500);
+          }
+          String.prototype.capitalizeFirstLetter = function() {
+              return this.charAt(0).toUpperCase() + this.slice(1);
+          	}
+          document.addEventListener('DOMContentLoaded', function() {
+              console.log('embed js start');
+            //When the site LOADS
+                //Hide other stuff on the page ... should start this way by default
+                $('.hero.section').hide(); 
+                $('.form-item-div').hide();
+                //Prep Inputs
+          	      $.each(countyList, function(val, text) {
+                      $('#county-input').append( new Option(text,val) );
+            	    });
+                  $('#your-name').fadeIn('slow'); 
+                  //Push FA's into Form's
+                //get to work prepping the form
+                $('.form-item').html('<i class="fa fa-file-text" aria-hidden="true" style="color: orange;"></i>');
+                $('.tool-item').html('<i class="fa fa-percent" aria-hidden="true" style="color: grey;"></i>');
+                $('.file-item').html('<i class="fa fa-gavel" aria-hidden="true" style="color: grey;"></i>');
+                $('#telephone-input').attr('type','tel');
+                $('#address-state-input').attr('disable','true');
+          			//Add Overrides
+                $("#your-name").submit(function(e){
+                		formTransition(e,'#your-name','#spouse-name');
+                    $('#greeting').text($('#first-name-input').val().capitalizeFirstLetter());
+                    $( "#spouse-first-name-input" ).focus();
+                  });
+                 $('#spouse-name').submit(function(e) {
+                    formTransition(e,'#spouse-name','#your-county');
+                    $( "#county-input" ).focus();
+                  });
+            			$('#your-county').submit(function(e) {
+                  	formTransition(e,'#your-county','#first-form-congrats');
+                    $('#my-forms-tooltip').hide();
+                    webflowShow('#ud1');
+                    //little eye catching
+                    flashTime = 500;
+                    $("#ud1-form-item, .nav-menu-link").fadeIn(flashTime).fadeOut(flashTime).fadeIn(flashTime).fadeOut(flashTime).fadeIn(flashTime).fadeOut(flashTime).fadeIn(flashTime).fadeOut(flashTime).fadeIn(flashTime).fadeOut(flashTime).fadeIn(flashTime);
+                	});
+                  $('#first-form-congrats').submit(function(e) {
+                    formTransition(e,'#first-form-congrats','#address');
+                    $( "address-street-input" ).focus();
+                });
+          			$('#address').submit(function(e) {
+                    formTransition(e,'#address','#telephone');
+                    $( "address-street-input" ).focus();
+                });
+          			$('#telephone').submit(function(e) {
+                    formTransition(e,'#telephone','#first-form');
+                    $('#ud1-form-item > i:first').css("color","#19cc02");
+                });
+                $('#first-form').submit(function(e) {
+                    formTransition(e,'#first-form','#payment-prompt');
+                });
+                $('#payment-prompt-no').click(function(e) {
+                    formTransition(e,'#payment-prompt','#goodbye');
+                });
+                //Some shit in the modals!
+                $('#top-right-save').click(function(e) { //can enter modal from save btn
+                   $('#popup-modal').fadeIn();
+                   $('#checkout-modal-text').text('Saving is a paid feature on Scindo');
+                   $('#payment-modal').hide();
+                });
+                $('#payment-prompt').submit(function(e) { //can enter modal from end of form
+                		e.preventDefault();
+                    e.stopPropagation();
+                    $('#popup-modal').fadeIn();
+                    $('#payment-modal').hide();
+                });
+                $('#checkout-modal').submit(function(e) { //progress modal fwd
+                		e.preventDefault();
+                    e.stopPropagation();
+                    $('#payment-modal').fadeIn();
+                    $('#checkout-modal').fadeOut();
+                });
+                $('#checkout-modal').submit(function(e) { //don't bonk on submit
+                		e.preventDefault();
+                    e.stopPropagation();
+                });
+                //want to be able to close the modals
+                $('.close-modal').click(function(e) {
+                   e.preventDefault();
+                   $('#popup-modal').fadeOut();
+                });
+          }); //end of on doc load
+        </script>
+      </div>
+    </div>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+  <script src="../js/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+</body>
+</html>
